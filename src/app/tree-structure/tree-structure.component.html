@@ -1,0 +1,15 @@
+
+<div *ngIf="showPathOfSelectedFolder" class="directory-wrapper">
+    Directory: {{pathOfSelectedFolder}}
+</div>
+
+<div *ngFor="let folder of folderStructure">
+    <sai-folder [folderData]="folder"
+    [icon]="folderIcon"
+    [preSelectedId]="preSelectedFolderId"
+    [selectedId]="selectedFolderId"
+    [selectedIconColor] = "selectedIconColor"
+    [unselectedIconColor] = "unselectedIconColor"
+    (selectedFolderId)="handleSelectedFolder($event)"   
+    ></sai-folder>
+</div>

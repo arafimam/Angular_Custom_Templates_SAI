@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<!---Parent folder-->
+<div class="folder-wrapper" (click)="folderClicked(folderData!._id)">
+  <div class="folder-content" *ngIf="folderData">
+    <span class="material-symbols-outlined" [style.color]="folderData._isSelected ? selectedIconColor : unselectedIconColor">{{ icon }}</span>
+    <span class="folder-name">{{ folderData!.name }}</span>
+  </div>
+</div>
+
+<!---Children of a selected folder-->
+<div *ngIf="folderData != null" >
+  <div class="subFolder-Wrapper"  *ngFor="let childFolder of folderData.children">
+    <sai-folder  *ngIf="showChildFolders()"
+    [selectedIconColor]="selectedIconColor "
+    [icon]="icon"
+    [unselectedIconColor]="unselectedIconColor"
+    [folderData]="childFolder"
+    [preSelectedId]="preSelectedId"
+    (selectedFolderId)="emitFolderId($event)"
+    ></sai-folder>
+  </div>
+</div>
+  
